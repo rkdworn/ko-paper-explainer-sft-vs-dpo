@@ -15,7 +15,7 @@
 
 | 모델 | 설명 |
 |---|---|
-| A. Baseline | `Qwen/Qwen3-1.7B` 공식 모델 (thinking 모드 끔) |
+| A. Baseline | 공식 소형 모델: `Qwen/Qwen3.5-2B` 또는 `Qwen/Qwen3-1.7B` (학습 속도 비교 후 확정) |
 | B. SFT | A + 논문 설명 데이터로 LoRA SFT |
 | C. SFT+DPO | B + 선호 데이터로 DPO |
 
@@ -42,7 +42,17 @@
 ## 환경
 
 - GPU: NVIDIA RTX 5060 (8GB VRAM), LoRA 학습
+- Python 3.12, PyTorch 2.15 (CUDA 13.2)
 - 주요 라이브러리: `transformers`, `trl`, `peft`
+
+### 설치
+
+[uv](https://docs.astral.sh/uv/)로 가상환경을 만들고 패키지를 설치합니다.
+
+```bash
+uv sync                               # .venv 생성 + 패키지 설치
+uv run python scripts/check_env.py    # GPU 인식 확인
+```
 
 ## 폴더 구조
 
@@ -57,7 +67,9 @@ reports/   결과 표, 그래프, 분석
 ## 진행 상황
 
 - [x] 주제 및 실험 설계
-- [ ] 환경 세팅, 튜토리얼 데이터로 SFT·DPO 파이프라인 확인 (Qwen3-0.6B)
+- [x] 학습 환경 세팅 (uv 가상환경, PyTorch CUDA)
+- [ ] 모델 확정: Qwen3.5-0.8B vs Qwen3-0.6B 학습 속도·메모리 비교
+- [ ] 튜토리얼 데이터로 SFT·DPO 파이프라인 확인
 - [ ] 평가셋, SFT 데이터 구축
 - [ ] SFT 학습
 - [ ] 선호 데이터 생성, DPO 학습
