@@ -7,6 +7,10 @@ __pycache__/
 # API 키 등 비밀 정보
 .env
 
+# 개인 작업 설정 (공개하지 않음)
+CLAUDE.md
+.claude/
+
 # 학습 결과물 (용량이 커서 허깅페이스에 업로드)
 outputs/
 checkpoints/
